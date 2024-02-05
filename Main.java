@@ -1,10 +1,16 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+        Number num1 = new Number();
+        Number num2 = new Number();
+
+        System.out.println(num2.type);
+
         System.out.println("caligula"); // test
         System.out.println("hello"); // test 2
         //System.out.println("new caligula"); // new test
         //System.out.println("new caligula 3"); // new test 2
+
 
         double firstNum = 0.0;
 
@@ -21,6 +27,8 @@ public class Main {
             System.out.println("string");
             System.out.println(romeTransform(numRome));
             System.out.println("romeTransformed");
+
+            scanNum.close();
         }
     }
 
