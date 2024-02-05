@@ -26,32 +26,52 @@ public class Main {
 
     public static double romeTransform(String romeNumber) {
         double romeNumToArabicResult = 0.0;
+        int romeStringLenght = romeNumber.length();
         romeNumber = romeNumber.toUpperCase();
-        for(int i = 0; i < romeNumber.length(); i++) {
+        double[] arabicNumberMass = new double[romeStringLenght];
+        for(int i = 0; i < romeStringLenght; i++) {
             switch (romeNumber.charAt(i)) {
                 case 'I':
-                    romeNumToArabicResult += 1;
+                    //romeNumToArabicResult += 1;
+                    arabicNumberMass[i] = 1;
                     break;
                 case 'V':
-                    romeNumToArabicResult += 5;
+                    //romeNumToArabicResult += 5;
+                    arabicNumberMass[i] = 5;
                     break;
                 case 'X':
-                    romeNumToArabicResult += 10;
+                    //romeNumToArabicResult += 10;
+                    arabicNumberMass[i] = 10;
                     break;
                 case 'L':
-                    romeNumToArabicResult += 50;
+                    //romeNumToArabicResult += 50;
+                    arabicNumberMass[i] = 50;
                     break;
                 case 'C':
-                    romeNumToArabicResult += 100;
+                    //romeNumToArabicResult += 100;
+                    arabicNumberMass[i] = 100;
                     break;
                 case 'D':
-                    romeNumToArabicResult += 500;
+                    //romeNumToArabicResult += 500;
+                    arabicNumberMass[i] = 500;
                     break;
                 case 'M':
-                    romeNumToArabicResult += 1000;
+                    //romeNumToArabicResult += 1000;
+                    arabicNumberMass[i] = 1000;
                     break;
                 default:
                     break;
+            }
+        }
+        
+        romeNumToArabicResult += arabicNumberMass[0];
+        for (int i = 1; i < arabicNumberMass.length; i++) {
+            if (arabicNumberMass[i-1] < arabicNumberMass[i]) {
+                //arabicNumberMass[i] *= -1;
+                romeNumToArabicResult += arabicNumberMass[i] - arabicNumberMass[i-1] * 2;
+            }
+            else {
+                romeNumToArabicResult += arabicNumberMass[i];
             }
         }
         return romeNumToArabicResult;
